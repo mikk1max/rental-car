@@ -1,0 +1,11 @@
+.carListContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 1200px;
+  gap: 32px;
+}
+
+.loadMoreBtn {
+  margin: 80px auto 124px;
+}

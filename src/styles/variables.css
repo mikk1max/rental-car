@@ -1,0 +1,21 @@
+:root {
+  /* Typography */
+  --font-family: "Manrope";
+
+  /* Primary Colors */
+  --color-primary: #3470ff;
+  --color-primary-hover: #0b44cd;
+
+  /* Secondary Colors */
+  --background-header: #f2f4f7;
+  --color-active-select: #f7f7f7;
+  --color-badge: #43aaff;
+  --color-grey-light: #dadde1;
+
+  /* Neutral Colors */
+  --color-black: #101828;
+  --color-white: #ffffff;
+  --color-grey: #8e929a;
+
+  --transition-style: 0.3s ease;
+}

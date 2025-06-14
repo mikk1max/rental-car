@@ -1,0 +1,33 @@
+.navigationContainer {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+
+  max-width: 1440px;
+  padding: 24px 120px;
+
+  & .logoWrapper {
+    width: 104px;
+    height: 16px;
+
+    & img {
+      width: 100%;
+    }
+  }
+
+  & .navList {
+    display: flex;
+    gap: 32px;
+  }
+
+  .link {
+    color: var(--color-black);
+
+    font-weight: 500;
+    line-height: 1.25;
+  }
+
+  .activeLink {
+    color: var(--color-primary-hover);
+  }
+}

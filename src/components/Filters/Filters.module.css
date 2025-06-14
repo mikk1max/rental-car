@@ -1,0 +1,41 @@
+.filtersContainer {
+  display: flex;
+  width: fit-content;
+  gap: 16px;
+
+  align-items: flex-end;
+
+  & .carBrandLabel,
+  .pricePerHourLabel,
+  .fromToLabel {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  & .carBrandLabel > span,
+  .pricePerHourLabel > span,
+  .fromToLabel > span {
+    color: var(--color-grey);
+    font-size: 12px;
+
+    line-height: 1.33;
+  }
+
+  & .searchButton {
+    padding: 12px 50px;
+    max-height: fit-content;
+  }
+}
+
+.inputsContainer {
+  display: flex;
+
+  & .fromInput {
+    border-radius: 12px 0px 0px 12px;
+  }
+
+  & .toInput {
+    border-radius: 0px 12px 12px 0px;
+  }
+}

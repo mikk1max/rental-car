@@ -1,0 +1,46 @@
+.heroContainer {
+  width: 100vw;
+  /* max-width: 1440px; */
+  height: calc(100vh - 68px);
+
+  background-image: url("/1x/hero-car@1x.png");
+  background-repeat: no-repeat;
+  background-position: top;
+  background-size: cover;
+
+  @media (min-resolution: 192dpi) {
+    background-image: url("/2x/hero-car@2x.png");
+  }
+}
+
+.textBox {
+  color: var(--color-white);
+  text-align: center;
+  width: 100%;
+  max-width: 784px;
+
+  position: absolute;
+  bottom: 60px;
+  left: 50%;
+  transform: translateX(-50%);
+
+  & h1 {
+    font-size: 60px;
+    font-weight: 700;
+    line-height: 1.2;
+
+    margin-bottom: 16px;
+  }
+  & p {
+    font-size: 24px;
+    font-weight: 600;
+    line-height: 1.33;
+
+    margin-bottom: 40px;
+  }
+
+  & .button {
+    margin: 0 auto;
+    padding: 12px 88px;
+  }
+}
