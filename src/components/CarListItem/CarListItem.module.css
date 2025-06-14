@@ -6,11 +6,21 @@
   background-color: transparent;
 }
 
-.imgContainer {
+.imgContainer,
+.backgroundDark {
   position: absolute;
   top: 0;
   width: 276px;
   height: 268px;
+}
+
+.backgroundDark {
+  background: linear-gradient(
+    180deg,
+    rgba(18, 20, 23, 0.5) 2.5%,
+    rgba(18, 20, 23, 0) 41.07%
+  );
+  border-radius: 14px;
 }
 
 .image {
@@ -86,11 +96,19 @@
   width: 16px;
   height: 16px;
   fill: var(--background-header);
-  transition: fill 0.3s ease;
+  transition: fill var(--transition-style);
 }
 
 .iconButton:hover .icon {
   fill: var(--color-primary);
+}
+
+.iconF {
+  fill: var(--color-primary);
+}
+
+.iconButton:hover .iconF {
+  fill: var(--background-header);
 }
 
 .button {

@@ -31,3 +31,8 @@ export async function getAllCars({
   const { data } = await axios.get(`/cars?${params.toString()}`, options);
   return data;
 }
+
+export const getCarById = async (id) => {
+  const { data } = await axios.get(`/cars/${id}`);
+  return data;
+};

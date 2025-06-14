@@ -5,8 +5,23 @@ import styles from "./CarListItem.module.css";
 import icons from "../../assets/icons.svg";
 import CustomButton from "../ui/CustomButton/CustomButton";
 import { convertStrToArray } from "../../utils/helpers";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleFavorite } from "../../redux/favorites/slice";
+import clsx from "clsx";
+import { useNavigate } from "react-router-dom";
+import { scrollToTop } from "../../utils/scrollToTop";
 
 export default function CarListItem({ item }) {
+  const dispatch = useDispatch();
+  const favorites = useSelector((state) => state.favorites.favorites);
+  const isFavorite = favorites.includes(item.id);
+
+  const navigate = useNavigate();
+
+  const handleToggleFavorite = () => {
+    dispatch(toggleFavorite(item.id));
+  };
+
   return (
     <Card className={styles.card}>
       <div className={styles.imgContainer}>
@@ -16,6 +31,7 @@ export default function CarListItem({ item }) {
           alt={item.description}
           className={styles.image}
         />
+        <div className={styles.backgroundDark} />
       </div>
 
       <div className={styles.contentWrapper}>
@@ -44,15 +60,38 @@ export default function CarListItem({ item }) {
           </span>
         </Typography>
 
-        <button className={styles.iconButton} aria-label="bookmark">
-          <svg className={styles.icon}>
-            <use href={`${icons}#icon-heart-stroke`} />
+        <button
+          className={styles.iconButton}
+          aria-label={isFavorite ? "remove from favorites" : "add to favorites"}
+          onClick={handleToggleFavorite}
+        >
+          <svg
+            className={clsx(
+              styles.icon,
+              isFavorite ? styles.iconF : styles.iconN
+            )}
+          >
+            <use
+              href={
+                isFavorite
+                  ? `${icons}#icon-heart-fill`
+                  : `${icons}#icon-heart-stroke`
+              }
+            />
           </svg>
         </button>
       </div>
 
       <CardContent orientation="horizontal">
-        <CustomButton text="Read more" preset={1} className={styles.button} />
+        <CustomButton
+          text="Read more"
+          preset={1}
+          className={styles.button}
+          onClick={() => {
+            scrollToTop();
+            navigate(`/catalog/${item.id}`);
+          }}
+        />
       </CardContent>
     </Card>
   );
