@@ -10,7 +10,7 @@ export default function CarList({ cars, hasMore, onLoadMore, scrollToIndex }) {
   useScrollToIndex(scrollToIndex, itemRefs);
 
   return (
-    <>
+    <div>
       <div className={s.carListContainer}>
         {cars.map((item, index) => (
           <CarListItem
@@ -28,6 +28,6 @@ export default function CarList({ cars, hasMore, onLoadMore, scrollToIndex }) {
           onClick={onLoadMore}
         />
       )}
-    </>
+    </div>
   );
 }

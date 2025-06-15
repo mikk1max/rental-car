@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { scrollToTop } from "../../utils/scrollToTop";
 
-export default function CarListItem({ item, ref }) {
+export default function CarListItem({ item }, ref) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
   const isFavorite = favorites.includes(item.id);
