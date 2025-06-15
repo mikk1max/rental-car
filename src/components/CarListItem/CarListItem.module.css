@@ -3,13 +3,13 @@
   min-height: 424px;
   position: relative;
   padding: 268px 0 0 0;
-  border: 0;
+  border: none;
   background-color: transparent;
 }
 
 .imgBack {
-  width: 276px;
-  height: 268px;
+  width: calc(276px - 2 * 16px);
+  height: calc(268px - 2 * 16px);
 }
 
 .imgContainer,
