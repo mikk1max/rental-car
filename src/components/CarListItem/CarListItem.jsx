@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { scrollToTop } from "../../utils/scrollToTop";
 
-export default function CarListItem({ item }) {
+export default function CarListItem({ item, ref }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
   const isFavorite = favorites.includes(item.id);
@@ -24,7 +24,7 @@ export default function CarListItem({ item }) {
 
   return (
     <Card className={styles.card}>
-      <div className={styles.imgContainer}>
+      <div className={styles.imgContainer} ref={ref}>
         <img
           src={item.img}
           loading="lazy"

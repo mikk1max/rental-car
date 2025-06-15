@@ -159,6 +159,7 @@ export default function Catalog() {
           cars={cars}
           hasMore={page < totalPages}
           onLoadMore={handleLoadMore}
+          scrollToIndex={page > 1 ? (page - 1) * limit : null}
         />
       )}
     </main>
