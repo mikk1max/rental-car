@@ -11,7 +11,7 @@ import clsx from "clsx";
 import { useNavigate } from "react-router-dom";
 import { scrollToTop } from "../../utils/scrollToTop";
 
-export default function CarListItem({ item }, ref) {
+export default function CarListItem({ item, ref }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.favorites.favorites);
   const isFavorite = favorites.includes(item.id);
@@ -32,7 +32,7 @@ export default function CarListItem({ item }, ref) {
         minHeight: "424px",
       }}
     >
-      <div className={styles.imgContainer} ref={ref}>
+      <div className={styles.imgContainer}>
         <img
           src={item.img}
           loading="lazy"
@@ -42,7 +42,7 @@ export default function CarListItem({ item }, ref) {
         <div className={styles.backgroundDark} />
       </div>
 
-      <div className={styles.contentWrapper}>
+      <div className={styles.contentWrapper} ref={ref}>
         <div className={styles.header}>
           <Typography level="title-lg" className={styles.title}>
             <span className={styles.tBlack}>{item.brand + " "}</span>
