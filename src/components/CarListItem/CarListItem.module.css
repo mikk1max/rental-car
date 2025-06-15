@@ -1,12 +1,3 @@
-.card {
-  width: 276px;
-  min-height: 424px;
-  position: relative;
-  padding: 268px 0 0 0;
-  border: 0;
-  background-color: transparent;
-}
-
 .imgContainer,
 .backgroundDark {
   position: absolute;
@@ -33,7 +24,6 @@
 
 .contentWrapper {
   margin-top: 16px;
-  padding-top: 268px;
 }
 
 .header {
