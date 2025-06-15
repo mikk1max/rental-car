@@ -24,6 +24,7 @@ export default function CarListItem({ item }, ref) {
 
   return (
     <Card className={styles.card}>
+      <div className={styles.imgBack} />
       <div className={styles.imgContainer} ref={ref}>
         <img
           src={item.img}

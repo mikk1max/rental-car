@@ -7,6 +7,11 @@
   background-color: transparent;
 }
 
+.imgBack {
+  width: 276px;
+  height: 268px;
+}
+
 .imgContainer,
 .backgroundDark {
   position: absolute;
@@ -33,7 +38,6 @@
 
 .contentWrapper {
   margin-top: 16px;
-  padding-top: 268px;
 }
 
 .header {
