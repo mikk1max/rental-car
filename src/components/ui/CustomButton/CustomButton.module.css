@@ -8,6 +8,8 @@
 
   font-weight: 600;
   line-height: 1.25;
+
+  transition: all var(--transition-style);
 }
 
 .filledButton {
@@ -17,9 +19,17 @@
   color: var(--color-white);
 }
 
+.filledButton:hover {
+  background-color: var(--color-primary-hover);
+}
+
 .borderedButton {
   border: 1px solid var(--color-primary);
   background-color: transparent;
 
   color: var(--color-black);
+}
+
+.borderedButton:hover {
+  border: 1px solid var(--color-primary-hover);
 }

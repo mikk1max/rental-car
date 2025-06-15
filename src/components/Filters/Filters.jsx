@@ -1,67 +1,28 @@
-import React, { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React from "react";
 import CustomSelect from "../ui/CustomSelect/CustomSelect";
 import Loader from "../ui/Loader/Loader";
 import s from "./Filters.module.css";
 import CustomInput from "../ui/CustomInput/CustomInput";
 import CustomButton from "../ui/CustomButton/CustomButton";
+import Divider from "@mui/material/Divider";
 import clsx from "clsx";
 
-import {
-  selectBrands,
-  selectError,
-  selectIsLoading,
-  selectSelectedBrand,
-  selectSelectedPrice,
-  selectMileageFrom,
-  selectMileageTo,
-} from "../../redux/filters/selectors";
-
-import {
-  setSelectedBrand,
-  setSelectedPrice,
-  setMileageFrom,
-  setMileageTo,
-  setPage,
-} from "../../redux/filters/slice";
-
-import { fetchBrands } from "../../redux/filters/operations";
-import { fetchCars } from "../../redux/cars/operations";
-import { resetCars } from "../../redux/cars/slice";
-
-export default function Filters({ className }) {
-  const dispatch = useDispatch();
-
-  const brands = useSelector(selectBrands);
-  const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
-
-  const selectedBrand = useSelector(selectSelectedBrand);
-  const selectedPrice = useSelector(selectSelectedPrice);
-  const mileageFrom = useSelector(selectMileageFrom);
-  const mileageTo = useSelector(selectMileageTo);
-
-  useEffect(() => {
-    dispatch(fetchBrands());
-  }, [dispatch]);
-
-  const prices = ["Any", ...Array.from({ length: 11 }, (_, i) => (i + 2) * 10)];
-
-  const handleSearch = () => {
-    dispatch(setPage(1)); // Reset page
-    dispatch(resetCars()); // ✅ Clear previous list
-
-    dispatch(
-      fetchCars({
-        brand: selectedBrand !== "Any" ? selectedBrand : null,
-        price: selectedPrice !== "Any" ? Number(selectedPrice) : null,
-        mileageFrom: mileageFrom || null,
-        mileageTo: mileageTo || null,
-        page: 1,
-      })
-    );
-  };
-
+export default function Filters({
+  className,
+  brands,
+  prices,
+  selectedBrand,
+  selectedPrice,
+  mileageFrom,
+  mileageTo,
+  onBrandChange,
+  onPriceChange,
+  onMileageFromChange,
+  onMileageToChange,
+  onSearch,
+  isLoading,
+  error,
+}) {
   if (isLoading) return <Loader />;
   if (error) return <p className={s.error}>Error: {error}</p>;
 
@@ -73,7 +34,7 @@ export default function Filters({ className }) {
           options={brands}
           placeholder="Choose a brand"
           value={selectedBrand}
-          onChange={(e, value) => dispatch(setSelectedBrand(value))}
+          onChange={onBrandChange}
         />
       </label>
 
@@ -83,7 +44,7 @@ export default function Filters({ className }) {
           options={prices}
           placeholder="Choose a price"
           value={selectedPrice}
-          onChange={(e, value) => dispatch(setSelectedPrice(value))}
+          onChange={onPriceChange}
         />
       </label>
 
@@ -94,13 +55,14 @@ export default function Filters({ className }) {
             placeholder="From"
             className={s.fromInput}
             value={mileageFrom}
-            onChange={(e) => dispatch(setMileageFrom(e.target.value))}
+            onChange={onMileageFromChange}
           />
+          <Divider orientation="vertical" flexItem />
           <CustomInput
             placeholder="To"
             className={s.toInput}
             value={mileageTo}
-            onChange={(e) => dispatch(setMileageTo(e.target.value))}
+            onChange={onMileageToChange}
           />
         </div>
       </label>
@@ -109,7 +71,7 @@ export default function Filters({ className }) {
         text="Search"
         preset={1}
         className={s.searchButton}
-        onClick={handleSearch}
+        onClick={onSearch}
       />
     </div>
   );

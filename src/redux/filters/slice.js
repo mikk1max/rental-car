@@ -6,8 +6,6 @@ const initialState = {
   isLoading: false,
   error: null,
 
-  page: 1,
-  limit: 12,
   selectedBrand: "",
   selectedPrice: "",
   mileageFrom: "",
@@ -30,15 +28,7 @@ const filtersSlice = createSlice({
     setMileageTo: (state, action) => {
       state.mileageTo = action.payload;
     },
-    setPage: (state, action) => {
-      state.page = action.payload;
-    },
-    setLimit: (state, action) => {
-      state.limit = action.payload;
-    },
     resetFilters: (state) => {
-      state.page = 1;
-      state.limit = 12;
       state.selectedBrand = "";
       state.selectedPrice = "";
       state.mileageFrom = "";
@@ -67,8 +57,6 @@ export const {
   setSelectedPrice,
   setMileageFrom,
   setMileageTo,
-  setPage,
-  setLimit,
   resetFilters,
 } = filtersSlice.actions;
 

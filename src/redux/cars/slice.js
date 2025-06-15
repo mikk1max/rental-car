@@ -8,6 +8,7 @@ const carsSlice = createSlice({
     isLoading: false,
     error: null,
     page: 1,
+    limit: 8,
     total: 0,
     totalPages: 0,
   },
@@ -15,8 +16,12 @@ const carsSlice = createSlice({
     resetCars(state) {
       state.list = [];
       state.page = 1;
+      state.limit = 8;
       state.total = 0;
       state.totalPages = 0;
+    },
+    setPage: (state, action) => {
+      state.page = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -28,17 +33,25 @@ const carsSlice = createSlice({
       .addCase(fetchCars.fulfilled, (state, action) => {
         state.isLoading = false;
 
-        if (action.payload.page === 1) {
-          state.list = action.payload.cars; // Overwrite if it's a new filter
+        // Retrieve the `replace` flag from the thunk's arguments.
+        const { replace } = action.meta.arg;
+        const { cars, page, total, totalPages } = action.payload;
+
+        // Replace the list if replace is true; otherwise, filter and append.
+        if (replace) {
+          state.list = cars;
         } else {
-          state.list = [...state.list, ...action.payload.cars]; // Append for pagination
+          const newCars = cars.filter(
+            (newCar) =>
+              !state.list.some((existingCar) => existingCar.id === newCar.id)
+          );
+          state.list = [...state.list, ...newCars];
         }
 
-        state.page = action.payload.page;
-        state.total = action.payload.total;
-        state.totalPages = action.payload.totalPages;
+        state.page = page;
+        state.total = total;
+        state.totalPages = totalPages;
       })
-
       .addCase(fetchCars.rejected, (state, action) => {
         state.error = action.error.message;
         state.isLoading = false;
@@ -46,5 +59,5 @@ const carsSlice = createSlice({
   },
 });
 
-export const { resetCars } = carsSlice.actions;
+export const { resetCars, setPage } = carsSlice.actions;
 export default carsSlice.reducer;

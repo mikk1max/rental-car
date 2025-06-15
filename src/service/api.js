@@ -19,14 +19,16 @@ export async function getAllCars({
   mileageFrom,
   mileageTo,
   page,
+  limit,
 }) {
   const params = new URLSearchParams();
 
-  if (brand) params.append("brand", brand);
-  if (price) params.append("rentalPrice", price);
+  if (brand && brand !== "Any") params.append("brand", brand);
+  if (price && price !== "Any") params.append("rentalPrice", price);
   if (mileageFrom) params.append("minMileage", mileageFrom);
   if (mileageTo) params.append("maxMileage", mileageTo);
   if (page) params.append("page", page);
+  if (limit) params.append("limit", limit);
 
   const { data } = await axios.get(`/cars?${params.toString()}`, options);
   return data;

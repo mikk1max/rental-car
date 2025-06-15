@@ -8,16 +8,19 @@ export default function CustomInput({
 }) {
   return (
     <Input
-      placeholder={placeholder}
       className={className}
       value={value}
       onChange={onChange}
+      startDecorator={
+        <span style={{ color: "var(--color-black)" }}>{placeholder}</span>
+      }
       type="number"
       sx={{
         width: 160,
         height: 44,
         backgroundColor: "var(--color-active-select)",
         border: 0,
+        borderRadius: 12,
         fontWeight: 500,
         color: "var(--color-black)",
         "&::before": {

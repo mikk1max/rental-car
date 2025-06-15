@@ -1,12 +1,71 @@
-# React + Vite
+# Rental Car
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+**Rental Car** is a modern web application that allows users to browse and book car rentals. It provides a user-friendly interface for customers to select vehicles, choose rental dates, and complete bookings with ease.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+The project is built using **React** with **Vite**, and leverages **Material UI**, **Formik**, **Redux Toolkit**, and other modern web technologies to ensure a smooth and responsive experience.
 
-## Expanding the ESLint configuration
+## Key Features
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- Browse available rental cars with detailed information
+- Filter and search by car type, brand, or availability
+- Book a car by selecting dates via a date picker
+- Form validation with Formik and Yup
+- Responsive UI with Material UI components
+- Persistent state using Redux Persist
+
+## Installation
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/mikk1max/rental-car.git
+   cd rental-car
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start the development server:**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Build for production:**
+
+   ```bash
+   npm run build
+   ```
+
+5. **Preview production build:**
+
+   ```bash
+   npm run preview
+   ```
+
+## Tech Stack
+
+- **React 19**
+- **Vite**
+- **Material UI**
+- **Formik + Yup**
+- **Redux Toolkit + Redux Persist**
+- **React Router DOM**
+- **Axios**
+- **Date-fns**
+
+## Author
+
+**Maksym Shepeta**  
+Frontend Developer  
+Email: maksim.shepeta@gmail.com <br>
+GitHub: [https://github.com/mikk1max](https://github.com/mikk1max)
+
+---
+
+Feel free to contribute or report issues via GitHub Issues!

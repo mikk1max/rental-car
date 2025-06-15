@@ -15,11 +15,10 @@ import {
   REGISTER,
 } from "redux-persist";
 
-// ✅ Correct per-slice persist configs
 const carsPersistConfig = {
   key: "cars",
   storage,
-  whitelist: ["items"],
+  whitelist: ["list", "total", "totalPages"],
 };
 
 const filtersPersistConfig = {
@@ -30,10 +29,8 @@ const filtersPersistConfig = {
 const favoritesPersistConfig = {
   key: "favorites",
   storage,
-  whitelist: ["list"], // ensure your slice uses `list` as the favorites array
 };
 
-// ✅ Wrap each reducer with its own persist config
 const persistedCarReducer = persistReducer(carsPersistConfig, carReducer);
 const persistedFiltersReducer = persistReducer(
   filtersPersistConfig,
@@ -44,7 +41,6 @@ const persistedFavoritesReducer = persistReducer(
   favoritesReducer
 );
 
-// ✅ Store configuration
 export const store = configureStore({
   reducer: {
     cars: persistedCarReducer,
@@ -60,5 +56,4 @@ export const store = configureStore({
     }),
 });
 
-// ✅ Export the persistor
 export const persistor = persistStore(store);

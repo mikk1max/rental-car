@@ -4,7 +4,7 @@ import Typography from "@mui/joy/Typography";
 import styles from "./CarListItem.module.css";
 import icons from "../../assets/icons.svg";
 import CustomButton from "../ui/CustomButton/CustomButton";
-import { convertStrToArray } from "../../utils/helpers";
+import { convertBigNumberToStr, convertStrToArray } from "../../utils/helpers";
 import { useDispatch, useSelector } from "react-redux";
 import { toggleFavorite } from "../../redux/favorites/slice";
 import clsx from "clsx";
@@ -56,7 +56,7 @@ export default function CarListItem({ item }) {
           <span className={styles.row}>
             <span>{item.type}</span>
             <span className={styles.separator}>|</span>
-            <span>{`${item.mileage} km`}</span>
+            <span>{`${convertBigNumberToStr(item.mileage)} km`}</span>
           </span>
         </Typography>
 
